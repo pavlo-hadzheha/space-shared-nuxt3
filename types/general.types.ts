@@ -1,3 +1,4 @@
+
 export type TIndexedObject<T = any> = {
   [key: string]: T
 }
@@ -15,4 +16,9 @@ export enum EComponentSize {
   DEFAULT = 'default',
   LARGE = 'large',
   SMALL = 'small'
+}
+
+export interface INavigation {
+  label: string
+  name: string
 }

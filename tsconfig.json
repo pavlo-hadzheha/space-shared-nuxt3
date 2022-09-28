@@ -1,7 +1,9 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
-  "useDefineForClassFields": true,
+  "compilerOptions": {
+    "useDefineForClassFields": true
+  },
   "importHelpers": true,
   "experimentalDecorators": true,
   "isolatedModules": true,

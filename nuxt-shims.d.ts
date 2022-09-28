@@ -3,11 +3,13 @@
 
 import { EComponentSize, EComponentType } from '~/types'
 import { routeNames } from '~/build-config/router/route-names'
+import { FontAwesomeIconsList } from '~/plugins/font-awesome.plugin'
 
 interface IGlobalProperties {
   $componentType: typeof EComponentType
   $componentSize: typeof EComponentSize
   $routeNames: typeof routeNames
+  $icons: typeof FontAwesomeIconsList
 }
 
 interface IRouteMeta {
