@@ -1,4 +1,4 @@
-import { Controller, Get, Inject, Param, Query, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Inject, Param, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from 'src/decorators/currentUserDecorator';
 import { AuthGuard } from 'src/guards/AuthGuard';
@@ -31,7 +31,7 @@ export class UsersController {
     }
 
     @ApiCreatedResponse({ type: UserResponse })
-    @Get('/{userId}')
+    @Get('/:userId')
     getUserById(
         @Param('userId') userId: string
     ): Promise<UserResponse> {
