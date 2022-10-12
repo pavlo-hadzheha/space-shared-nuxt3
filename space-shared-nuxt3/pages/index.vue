@@ -7,18 +7,35 @@ definePageMeta({
   icon: FontAwesomeIconsList.fasHome,
   middleLink: true
 })
+
 </script>
 
 <template>
-  <div>
+  <div class="mb-100">
     <section id="home-top" class="section home-top">
-      <video id="video" class="video" src="@/assets/home-video.mp4" autoplay loop />
+      <video
+        id="video"
+        class="video"
+        src="@/assets/home-video.mp4"
+        autoplay
+        loop
+      />
       <div class="container">
         <div class="home-top-content">
           <h1 class="home-top-content-title">Work from Anywhere</h1>
           <div class="home-top-content-actions">
-            <a class="btn btn-regular" href="#bigTitle">For individuals</a>
-            <a class="btn btn-regular" href="#forBusiness">For Business</a>
+            <a class="btn btn-regular" href="#bigTitle">
+              <el-button
+                :type="$componentType.PRIMARY"
+                :size="$componentSize.LARGE"
+              >For individuals</el-button>
+            </a>
+            <a class="btn btn-regular" href="#forBusiness">
+              <el-button
+                :type="$componentType.PRIMARY"
+                :size="$componentSize.LARGE"
+              >For business</el-button>
+            </a>
           </div>
         </div>
       </div>
@@ -46,23 +63,39 @@ definePageMeta({
               </p>
               <div class="block-info-actions">
                 <NuxtLink>
-                  <el-button>Register</el-button>
+                  <el-button
+                    :type="$componentType.PRIMARY"
+                    :size="$componentSize.LARGE"
+                  >
+                    Register
+                  </el-button>
                 </NuxtLink>
                 <NuxtLink>
-                  <el-button>See more</el-button>
+                  <el-button
+                    :type="$componentType.PRIMARY"
+                    :size="$componentSize.LARGE"
+                    link
+                  >
+                    See more
+                  </el-button>
                 </NuxtLink>
               </div>
             </div>
             <div class="block-image">
               <svg
-                id="svgcomp-kd7dor6g" ref="svgcomp-kd7dor6g" key="svgcomp-kd7dor6g"
-                viewBox="0 0 480 390" version="1.1" role="img"
+                id="svgcomp-kd7dor6g"
+                ref="svgcomp-kd7dor6g"
+                key="svgcomp-kd7dor6g"
+                viewBox="0 0 480 390"
+                version="1.1"
+                role="img"
                 aria-label="ron-mcclenny-9yI8eQ9mdvY-unsplash.jpg"
               >
                 <defs>
                   <filter id="mask-comp-kd7dor6g-svg-bleach">
                     <feColorMatrix
-                      type="matrix" values="0 0 0 0 1
+                      type="matrix"
+                      values="0 0 0 0 1
                                           0 0 0 0 1
                                           0 0 0 0 1
                                           0 0 0 1 0"
@@ -70,15 +103,27 @@ definePageMeta({
                   </filter>
                   <mask id="mask-comp-kd7dor6g">
                     <use
-                      id="mask-comp-kd7dor6g-svg-use" filter="url(#mask-comp-kd7dor6g-svg-bleach)"
-                      xlink:href="#mask-comp-kd7dor6g-svg" width="100%" height="100%" x="0" y="0"
+                      id="mask-comp-kd7dor6g-svg-use"
+                      filter="url(#mask-comp-kd7dor6g-svg-bleach)"
+                      xlink:href="#mask-comp-kd7dor6g-svg"
+                      width="100%"
+                      height="100%"
+                      x="0"
+                      y="0"
                     />
                   </mask>
                   <svg
-                    id="mask-comp-kd7dor6g-svg" role="presentation" aria-hidden="true"
-                    preserveAspectRatio="none" data-bbox="22.08 35.313 155.84 127.334"
-                    viewBox="22.08 35.313 155.84 127.334" height="200" width="200"
-                    xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" data-type="tint"
+                    id="mask-comp-kd7dor6g-svg"
+                    role="presentation"
+                    aria-hidden="true"
+                    preserveAspectRatio="none"
+                    data-bbox="22.08 35.313 155.84 127.334"
+                    viewBox="22.08 35.313 155.84 127.334"
+                    height="200"
+                    width="200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    data-name="Layer 1"
+                    data-type="tint"
                   >
                     <g>
                       <path fill="#141414" d="M132.308 44.816v117.831l45.612-9.503V35.313l-45.612 9.503z" />
@@ -90,8 +135,12 @@ definePageMeta({
                 <image
                   key="image"
                   xlink:href="@/assets/home-for-hosts.webp"
-                  data-type="image" width="480" height="390" preserveAspectRatio="xMidYMid slice"
-                  mask="url(#mask-comp-kd7dor6g)" data-svg-mask="mask-comp-kd7dor6g-svg"
+                  data-type="image"
+                  width="480"
+                  height="390"
+                  preserveAspectRatio="xMidYMid slice"
+                  mask="url(#mask-comp-kd7dor6g)"
+                  data-svg-mask="mask-comp-kd7dor6g-svg"
                   style="width: 480px; height: 390px; object-fit: cover;"
                 />
               </svg>
@@ -100,18 +149,23 @@ definePageMeta({
         </div>
         <div id="forBusiness" class="block">
           <h3 class="block-title">For individuals</h3>
-          <h4 class="block-subtitle">Affordable and flexible workspaces, anywhere</h4>
+          <h4 class="block-subtitle text-primary">Affordable and flexible workspaces, anywhere</h4>
           <div class="block-gist">
             <div class="block-image">
               <svg
-                id="svgcomp-kgwitsar" ref="svgcomp-kgwitsar" key="svgcomp-kgwitsar"
-                viewBox="0 0 480 394" version="1.1" role="img"
+                id="svgcomp-kgwitsar"
+                ref="svgcomp-kgwitsar"
+                key="svgcomp-kgwitsar"
+                viewBox="0 0 480 394"
+                version="1.1"
+                role="img"
                 aria-label="paul-hanaoka-HbyYFFokvm0-unsplash.jpg"
               >
                 <defs>
                   <filter id="mask-comp-kgwitsar-svg-bleach">
                     <feColorMatrix
-                      type="matrix" values="0 0 0 0 1
+                      type="matrix"
+                      values="0 0 0 0 1
                                           0 0 0 0 1
                                           0 0 0 0 1
                                           0 0 0 1 0"
@@ -119,15 +173,27 @@ definePageMeta({
                   </filter>
                   <mask id="mask-comp-kgwitsar">
                     <use
-                      id="mask-comp-kgwitsar-svg-use" filter="url(#mask-comp-kgwitsar-svg-bleach)"
-                      xlink:href="#mask-comp-kgwitsar-svg" width="100%" height="100%" x="0" y="0"
+                      id="mask-comp-kgwitsar-svg-use"
+                      filter="url(#mask-comp-kgwitsar-svg-bleach)"
+                      xlink:href="#mask-comp-kgwitsar-svg"
+                      width="100%"
+                      height="100%"
+                      x="0"
+                      y="0"
                     />
                   </mask>
                   <svg
-                    id="mask-comp-kgwitsar-svg" role="presentation" aria-hidden="true"
-                    preserveAspectRatio="none" data-bbox="22.08 35.313 155.84 127.334"
-                    viewBox="22.08 35.313 155.84 127.334" height="200" width="200"
-                    xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" data-type="tint"
+                    id="mask-comp-kgwitsar-svg"
+                    role="presentation"
+                    aria-hidden="true"
+                    preserveAspectRatio="none"
+                    data-bbox="22.08 35.313 155.84 127.334"
+                    viewBox="22.08 35.313 155.84 127.334"
+                    height="200"
+                    width="200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    data-name="Layer 1"
+                    data-type="tint"
                   >
                     <g>
                       <path fill="#141414" d="M132.308 44.816v117.831l45.612-9.503V35.313l-45.612 9.503z" />
@@ -139,8 +205,12 @@ definePageMeta({
                 <image
                   key="image"
                   xlink:href="@/assets/home-for-users.webp"
-                  data-type="image" width="480" height="394" preserveAspectRatio="xMidYMid slice"
-                  mask="url(#mask-comp-kgwitsar)" data-svg-mask="mask-comp-kgwitsar-svg"
+                  data-type="image"
+                  width="480"
+                  height="394"
+                  preserveAspectRatio="xMidYMid slice"
+                  mask="url(#mask-comp-kgwitsar)"
+                  data-svg-mask="mask-comp-kgwitsar-svg"
                   style="width: 480px; height: 394px; object-fit: cover;"
                 />
               </svg>
@@ -157,10 +227,21 @@ definePageMeta({
               </p>
               <div class="block-info-actions">
                 <NuxtLink>
-                  <el-button>Sign Up</el-button>
+                  <el-button
+                    :type="$componentType.PRIMARY"
+                    :size="$componentSize.LARGE"
+                  >
+                    Sign Up
+                  </el-button>
                 </NuxtLink>
                 <NuxtLink>
-                  <el-button>See more</el-button>
+                  <el-button
+                    :type="$componentType.PRIMARY"
+                    :size="$componentSize.LARGE"
+                    link
+                  >
+                    See more
+                  </el-button>
                 </NuxtLink>
               </div>
             </div>
@@ -178,10 +259,23 @@ definePageMeta({
 
     <section class="section newsletter">
       <h3 class="big-title">Sign up to out newsletter below:</h3>
-      <form class="input-wrapper">
-        <input type="text" class="form-control" placeholder="Email Address">
-        <input type="submit" class="btn btn-regular" value="Subscribe">
-      </form>
+      <el-form class="mx-auto">
+        <el-form-item>
+          <el-input
+            :size="$componentSize.LARGE"
+            placeholder="Email Address"
+          />
+        </el-form-item>
+        <el-form-item>
+          <el-button
+            :type="$componentType.PRIMARY"
+            :size="$componentSize.LARGE"
+            class="w-full"
+          >
+            Subscribe
+          </el-button>
+        </el-form-item>
+      </el-form>
     </section>
   </div>
 </template>
@@ -263,21 +357,16 @@ definePageMeta({
 
     .block-title {
       font-size: calc((40 / 16) * 1rem);
-      margin-bottom: 1rem;
+      @apply mb-16;
     }
 
     .block-subtitle {
-      font-size: 2rem;
+      @apply text-[2rem] mb-16 text-primary;;
       font-family: Nunito-Bold;
-      margin-bottom: 1rem;
-      color: var(--primary-color);
     }
 
     .block-gist {
-      display: flex;
-      align-items: stretch;
-      margin-top: 1em;
-      gap: 30px;
+      @apply flex items-stretch mt-16 gap-30;
 
       .block-image {
         height: 100%;
@@ -346,17 +435,11 @@ definePageMeta({
 
 .newsletter {
   width: min(70%, 600px);
-  margin: 0 auto 4rem;
+  @apply mb-100 mx-auto;
   .big-title {
     font-size: 30px;
     text-align: center;
     margin-bottom: 30px;
-  }
-  .input-wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 40px 40px;
-    row-gap: 20px;
   }
 
   @media screen and (max-width: 768px) {

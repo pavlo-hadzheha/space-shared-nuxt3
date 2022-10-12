@@ -26,7 +26,14 @@ module.exports = {
     'no-undef': 'off',
     'no-prototype-builtins': 'off',
     'array-callback-return': 'off',
-    'vue/max-attributes-per-line': 'off',
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 2
+      },
+      multiline: {
+        max: 1
+      }
+    }],
     'vue/require-default-prop': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/no-v-html': 'off',

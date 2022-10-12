@@ -12,13 +12,12 @@ const navigation = router.options.routes.slice()
       <div class="wrapper">
         <nav class="nav">
           <div class="nav-brand">
-            <NuxtLink class="nav-link">
+            <NuxtLink class="nav-item">
               <img
                 src="@/assets/svg/planet-space-svgrepo-com.svg"
-                class="nav-item-icon"
                 width="46"
               >
-              <span class="nav-item-text">SpaceShare</span>
+              SpaceShare
             </NuxtLink>
           </div>
           <div class="nav-links">
@@ -42,25 +41,19 @@ const navigation = router.options.routes.slice()
 
 <style lang="scss" scoped>
   .header.header-alt {
-    height: 80px;
-    display: none;
-    position: static;
-    box-shadow: none;
+    @apply h-80 hidden static shadow-none;
 
     .wrapper {
-      padding: 20px;
-      width: 100%;
+      @apply w-full p-20;
 
       .nav {
-        &-brand {
-          font-size: 14px;
+        @apply text-18;
 
-          .nav-item-icon {
-            margin-bottom: 5px;
+        &-brand {
+          .nav-item {
+            @apply text-primary;
           }
         }
-
-        font-size: 18px;
 
         .nav-item {
           &-text {
@@ -72,77 +65,30 @@ const navigation = router.options.routes.slice()
   }
 
   .header {
+    @apply w-full flex justify-center items-center;
     height: max(12vh, 90px);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: Nunito-Regular;
 
     .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      font-size: 18px;
+      @apply flex justify-between items-center w-full text-[18px];
 
       &-brand {
-        text-align: center;
-
-        .nav-link {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          color: var(--primary-color);
-
-          .nav-item-icon {
-            margin-bottom: 10px;
-          }
-
-          .nav-item-text {
-            fill: var(--primary-color)
-          }
+        .nav-item {
+            @apply text-primary justify-center items-center flex-col flex gap-1;
         }
       }
 
       &-links {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @apply h-full flex justify-center items-center;
+
         .nav-item {
           @apply px-[1.4em] py-[0.5em]
         }
       }
 
       &-actions {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @apply h-full flex justify-center items-center;
       }
-
-      .nav-item {
-        &-icon {
-          display: block;
-        }
-
-        .nav-link {
-          color: black;
-          display: flex;
-          gap: 5px;
-
-          &.btn-regular {
-            color: white;
-          }
-
-          &.active {
-            color: var(--primary-color) !important;
-          }
-        }
-      }
-
     }
   }
 
@@ -150,7 +96,7 @@ const navigation = router.options.routes.slice()
     .header {
 
       .nav {
-        font-size: 14px;
+        @apply text-14;
 
       }
     }
@@ -158,54 +104,45 @@ const navigation = router.options.routes.slice()
 
   @media screen and (max-width: 768px) {
     .header {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      height: 60px;
-      background-color: white;
-      z-index: 1;
-      box-shadow: 0 0 10px 0;
+      @apply fixed bottom-0 right-0 left-0 h-60 bg-white z-1 shadow-4;
+      // box-shadow: 0 0 10px 0;
 
       .nav {
-        font-size: 14px;
+        @apply text-14;
 
         &-brand {
-          display: none;
+          @apply hidden;
         }
 
         &-links {
-          width: 100%;
-          justify-content: space-around;
+          @apply w-full justify-around;
         }
 
         &-actions {
-          display: none;
+          @apply hidden;
         }
 
         .nav-link {
-          flex-direction: column;
-          align-items: center;
+          @apply flex-col items-center;
         }
 
       }
     }
 
     .header.header-alt {
-      display: flex;
+      @apply flex;
 
       .nav {
-
         &-brand {
-          display: block;
+          @apply block;
         }
 
         &-actions {
-          display: block;
+          @apply block;
         }
 
         .nav-link {
-          flex-direction: row;
+          @apply flex-row;
         }
 
       }
@@ -215,7 +152,7 @@ const navigation = router.options.routes.slice()
   @media screen and (max-width: 425px) {
     .header {
       .nav {
-        font-size: 12px;
+        @apply text-12;
       }
     }
   }

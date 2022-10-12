@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <main class="main">
+  <main class="main mb-100">
     <slot />
   </main>
 </template>
