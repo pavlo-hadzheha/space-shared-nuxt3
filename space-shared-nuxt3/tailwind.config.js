@@ -1,4 +1,6 @@
-module.exports = {
+import { colors } from './tailwind'
+
+export default {
   content: [
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}'
@@ -10,79 +12,7 @@ module.exports = {
       purple: `linear-gradient(211.28deg, ${theme('colors.purple-start')} -8.26%, ${theme('colors.purple-end')} 144.42%)`,
       orange: `linear-gradient(211.28deg, ${theme('colors.orange-start')} -8.26%, ${theme('colors.orange-end')} 144.42%)`
     }),
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      white: '#ffffff',
-
-      // G R E E N
-      secondary: '#70E0DE',
-      green: '#00B00D',
-      success: '#5E8A4F',
-      'haze-green': '#00A341',
-      'green-light': '#10B981',
-      'blured-green': '#D3E7B1',
-
-      // B L U E
-      blue: '#001A62',
-      'demin-blue': '#1B64BF',
-      'sea-blue': '#1760FF',
-      'blue-filled': 'rgba(177, 195, 255, 0.8)',
-      'sea-blue-transparent': '#1760FF26',
-      'tree-node-blue': 'rgb(17 134 252 / 0.05)',
-
-      warning: '#FF7C32',
-      'warning-transparent': '#ff7c3226',
-
-      // P U R P L E
-      primary: '#F30067',
-      purple: '#7D59FB',
-      'purple-heart': '#6A36BB',
-      'purple-light': '#7C3AED',
-
-      // R E D
-      danger: '#FD3E3E',
-      'radical-red': '#FF2757',
-      'red-half': 'rgba(255, 77, 86, 0.5)',
-      'red-transparent': '#FF4D5626',
-
-      // Y E L L O W
-      yellow: '#F1CB00',
-      'yolk-yellow': '#ECC700',
-      'corn-yellow': '#FDF7D9',
-      'ripe-lemon': '#F5D10F',
-
-      disabled: '#C0C4CC',
-      'disabled-signature': '#F4F7FA',
-
-      // G R E Y
-      grey: '#A4A4A4',
-      'athens-grey': '#F8F9FA',
-      'tundora-grey': '#424242',
-      'cod-grey': '#0D0D0D',
-      'alto-grey': '#D8D8D8',
-      'scorpion-grey': '#5E5D5D',
-      'santas-grey': '#9AA1B1',
-      'light-grey': '#F6F7FC',
-      'dow-grey': '#696969',
-      'mercury-grey': '#E6E5E5',
-      'silver-grey': '#7F7F7F',
-      'deep-grey': '#636363',
-      'yellow-optional': '#FDF7D9',
-      'red-required': '#FEC3B1FF',
-      'red-required-radio': '#E54311FF',
-      'yellow-optional-radio': '#ffd902',
-
-      // Gradient stops
-      'green-start': '#6EAE05',
-      'green-end': '#10C659',
-      'blue-start': '#00A3C7',
-      'blue-end': '#3F7AFB',
-      'orange-start': '#FDCE74',
-      'orange-end': '#C8391A',
-      'purple-start': '#FD749B',
-      'purple-end': '#281AC8'
-    },
+    colors,
     spacing: {
       '1/4': '25%',
       0: '0',

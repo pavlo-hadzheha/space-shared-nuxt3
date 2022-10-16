@@ -10,7 +10,46 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    Spaces
-  </div>
+  <ElMain class="p-20">
+    <AppButton
+      :type="$componentType.PRIMARY"
+      text
+    >
+      PRIMARY
+    </AppButton>
+
+    <AppButton
+      :type="$componentType.SUCCESS"
+      text
+    >
+      SUCCESS
+    </AppButton>
+
+    <AppButton
+      :type="$componentType.PRIMARY"
+    >
+      PRIMARY
+    </AppButton>
+
+    <AppButton
+      :type="$componentType.SUCCESS"
+    >
+      SUCCESS
+    </AppButton>
+
+    <AppButton
+      :type="$componentType.PRIMARY"
+      disabled
+    >
+      PRIMARY
+    </AppButton>
+
+    <AppButton
+      :type="$componentType.PRIMARY"
+      text
+      disabled
+    >
+      SUCCESS
+    </AppButton>
+  </ElMain>
 </template>

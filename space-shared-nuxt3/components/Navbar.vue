@@ -4,6 +4,7 @@ const router = useRouter()
 const navigation = router.options.routes.slice()
   .filter((_route) => !!_route.meta.navOrder)
   .sort((a, b) => a.meta.navOrder - b.meta.navOrder)
+
 </script>
 
 <template>
