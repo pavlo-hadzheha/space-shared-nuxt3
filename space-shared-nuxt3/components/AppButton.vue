@@ -6,11 +6,7 @@
       {
         'disabled': disabled,
         'plain-text': text,
-        'btn-xxl': $mq.xxl,
-        'btn-xl': $mq.xl,
-        'btn-lg': $mq.lg,
-        'btn-md': $mq.md,
-        'btn-sm': $mq.sm
+        ...sizeClasses
       }
     ]"
   >
@@ -19,13 +15,13 @@
 </template>
 
 <script setup lang="ts">
-import { EBreakpoint, EButtonSize, EComponentType } from '~~/types'
+import { EButtonSize, EComponentType, TIndexedObject } from '~~/types'
 import { colors } from '~~/tailwind'
+const { $mq } = useNuxtApp()
 
 const props = withDefaults(defineProps<{
   responsive?: boolean
-  breakpoints?: Record<EBreakpoint | number, EButtonSize>
-  size?: EBreakpoint
+  size?: EButtonSize
   disabled?: boolean
   text?: boolean
   type?: EComponentType
@@ -46,6 +42,30 @@ const backgroundColor = computed(() => {
     return 'transparent'
   } else {
     return colors?.[props.type] || '#000'
+  }
+})
+const sizeClasses = ref<TIndexedObject<boolean>>({})
+function updateSizeClasses () {
+  const { responsive } = props
+  sizeClasses.value = {
+    ['btn-' + 'xxl']: $mq.xxl && responsive,
+    ['btn-' + 'xl']: $mq.xl && responsive,
+    ['btn-' + 'lg']: $mq.lg && responsive,
+    ['btn-' + 'md']: $mq.md && responsive,
+    ['btn-' + 'sm']: $mq.sm && responsive
+  }
+}
+
+watch($mq, updateSizeClasses)
+
+onMounted(() => {
+  const { responsive } = props
+  sizeClasses.value = {
+    ['btn-' + 'xxl']: $mq.xxl && responsive,
+    ['btn-' + 'xl']: $mq.xl && responsive,
+    ['btn-' + 'lg']: $mq.lg && responsive,
+    ['btn-' + 'md']: $mq.md && responsive,
+    ['btn-' + 'sm']: $mq.sm && responsive
   }
 })
 </script>

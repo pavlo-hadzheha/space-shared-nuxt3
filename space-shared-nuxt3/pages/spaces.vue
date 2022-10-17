@@ -27,6 +27,8 @@ definePageMeta({
 
     <AppButton
       :type="$componentType.PRIMARY"
+      :breakpoints="{[$bp.SM]: $buttonSize.XXL}"
+      responsive
     >
       PRIMARY
     </AppButton>

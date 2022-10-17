@@ -1,5 +1,5 @@
 import { defineNuxtPlugin } from '#app'
-import { EBreakpoint, EComponentSize, EComponentType } from '~/types'
+import { EBreakpoint, EButtonSize, EComponentSize, EComponentType } from '~/types'
 import { routeNames } from '~/build-config/router/route-names'
 
 export default defineNuxtPlugin(() => {
@@ -14,7 +14,9 @@ export default defineNuxtPlugin(() => {
         lg: useMediaQuery(`(min-width: ${EBreakpoint.LG}px)`),
         md: useMediaQuery(`(min-width: ${EBreakpoint.MD}px)`),
         sm: useMediaQuery(`(min-width: ${EBreakpoint.SM}px)`)
-      })
+      }),
+      bp: EBreakpoint,
+      buttonSize: EButtonSize
     }
   }
 })
