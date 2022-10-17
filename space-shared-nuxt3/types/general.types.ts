@@ -11,31 +11,6 @@ export enum EBreakpoint {
   SM = 540
 }
 
-/*
-  width: 100%;
-  margin: auto;
-
-  @media screen and (min-width: 576px) {
-    width: 540px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 720px;
-  }
-
-  @media screen and (min-width: 992px) {
-    width: 960px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    width: 1140px;
-  }
-
-  @media screen and (min-width: 1400px) {
-    width: 1320px;
-  }
-*/
-
 export enum EComponentType {
   INFO = 'info',
   PRIMARY = 'primary',
@@ -52,7 +27,11 @@ export enum EComponentSize {
 }
 
 export enum EButtonSize {
-
+  XXL = 'xxl',
+  XL = 'xl',
+  LG = 'lg',
+  MD = 'md',
+  SM = 'sm'
 }
 
 export interface INavigation {

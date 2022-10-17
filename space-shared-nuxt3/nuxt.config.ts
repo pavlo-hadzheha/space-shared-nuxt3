@@ -13,10 +13,10 @@ export default defineNuxtConfig({
   ],
 
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt'
     // './modules/icon-module'
   ],
-
   buildModules: [
     '@vueuse/nuxt'
   ],

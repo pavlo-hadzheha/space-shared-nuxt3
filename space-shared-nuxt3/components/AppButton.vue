@@ -2,9 +2,15 @@
   <button
     :class="[
       'btn',
+      'random',
       {
         'disabled': disabled,
-        'plain-text': text
+        'plain-text': text,
+        'btn-xxl': $mq.xxl,
+        'btn-xl': $mq.xl,
+        'btn-lg': $mq.lg,
+        'btn-md': $mq.md,
+        'btn-sm': $mq.sm
       }
     ]"
   >
@@ -13,12 +19,12 @@
 </template>
 
 <script setup lang="ts">
-import { EBreakpoint, EComponentSize, EComponentType } from '~~/types'
+import { EBreakpoint, EButtonSize, EComponentType } from '~~/types'
 import { colors } from '~~/tailwind'
 
 const props = withDefaults(defineProps<{
   responsive?: boolean
-  breakpoints?: Record<EBreakpoint | number, EComponentSize>
+  breakpoints?: Record<EBreakpoint | number, EButtonSize>
   size?: EBreakpoint
   disabled?: boolean
   text?: boolean
@@ -46,7 +52,7 @@ const backgroundColor = computed(() => {
 
 <style scoped lang="scss">
 .btn {
-  @apply py-[0.5em] px-[1.4em] rounded-5 cursor-pointer;
+  @apply py-[0.5em] px-[1.4em] rounded-5 cursor-pointer text-12;
   @apply border-none transition-all duration-300 ease-in;
   color: v-bind(textColor);
   background-color: v-bind(backgroundColor);
@@ -72,8 +78,20 @@ const backgroundColor = computed(() => {
     @apply mr-10;
   }
 
-  @media screen {
-
+  &-sm {
+    @apply text-12;
+  }
+  &-md {
+    @apply text-14;
+  }
+  &-lg {
+    @apply text-16;
+  }
+  &-xl {
+    @apply text-20;
+  }
+  &-xxl {
+    @apply text-24;
   }
 }
 </style>
