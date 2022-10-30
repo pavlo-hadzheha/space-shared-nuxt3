@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { EButtonSize, EComponentType } from '@/types'
+import { EButtonSize, TNullableField, EComponentType } from '@/types'
 
 const colors = {
   transparent: 'transparent',
@@ -63,14 +63,14 @@ const backgroundColor = computed(() => {
 function onMousedown (_event: MouseEvent) {
   const target = _event.target as HTMLButtonElement
   if (target) {
-    target.style.opacity = 0.6
+    target.style.opacity = '0.6'
   }
 }
 
 function onMouseup (_event: MouseEvent) {
   const target = _event.target as HTMLButtonElement
   if (target) {
-    target.style.opacity = 1
+    target.style.opacity = '1'
   }
 }
 
