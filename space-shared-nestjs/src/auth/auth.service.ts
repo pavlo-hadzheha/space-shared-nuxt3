@@ -45,6 +45,8 @@ export class AuthService {
             passwordHash: hashPassword,
             firstName: data.firstName,
             lastName: data.lastName,
+            company: data.company,
+            rule: data.rule,
         });
 
         return this.createToken(newUser.id, newUser.email, false);

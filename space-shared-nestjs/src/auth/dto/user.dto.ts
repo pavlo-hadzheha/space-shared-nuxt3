@@ -1,4 +1,7 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { Rule } from "src/models/user.model";
+
+
 
 export class LoginDto {
     @ApiProperty()
@@ -16,6 +19,10 @@ export class RegisterDto {
     firstName: string;
     @ApiProperty()
     lastName: string;
+    @ApiPropertyOptional()
+    company?: string;
+    @ApiProperty({ enum: [Rule.USER, Rule.HOST, Rule.ADMIN] })
+    rule: Rule;
 }
 
 
@@ -28,5 +35,9 @@ export class UserResponse {
     firstName: string;
     @ApiProperty()
     lastName: string;
+    @ApiPropertyOptional()
+    company?: string;
+    @ApiProperty({ enum: [Rule.USER, Rule.HOST, Rule.ADMIN] })
+    rule: Rule;
 }
 

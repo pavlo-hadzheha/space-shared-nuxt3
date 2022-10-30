@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/models/user.model';
-import { MongoRepository, ObjectID } from 'typeorm';
-import { UserResponse } from '../auth/dto/user.dto';
-
+import { MongoRepository } from 'typeorm';
+import { ObjectID } from 'mongodb';
+ 
 @Injectable()
 export class UserService {
     constructor(
@@ -15,7 +15,7 @@ export class UserService {
     }
 
     async getById(id: string): Promise<User> {
-        return await this.userRepository.findOneBy({id: id });
+        return await this.userRepository.findOneBy({_id: ObjectID(id) });
     }
 
     async getByEmail(email: string): Promise<User> {
