@@ -14,7 +14,6 @@ export default defineComponent({
         const iconToRender = this.name.find(([, key]) => key)
         return h('div', [iconToRender ? h(FontAwesomeIcon, { icon: iconToRender[0] }) : null])
       } else {
-        console.log(this.name)
         return h('div', [h(FontAwesomeIcon, { icon: this.name })])
       }
     } else {

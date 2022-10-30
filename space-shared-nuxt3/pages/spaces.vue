@@ -10,7 +10,7 @@ definePageMeta({
 </script>
 
 <template>
-  <ElMain class="p-20">
+  <div class="p-20">
     <AppButton
       :type="$componentType.PRIMARY"
       text
@@ -53,5 +53,5 @@ definePageMeta({
     >
       SUCCESS
     </AppButton>
-  </ElMain>
+  </div>
 </template>

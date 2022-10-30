@@ -7,23 +7,22 @@
   width: 100%;
   margin: auto;
 
-  @media screen and (min-width: 576px) {
+  @screen xs {
+    width: 100%;
+  }
+  @screen sm {
     width: 540px;
   }
-
-  @media screen and (min-width: 768px) {
+  @screen md {
     width: 720px;
   }
-
-  @media screen and (min-width: 992px) {
+  @screen lg {
     width: 960px;
   }
-
-  @media screen and (min-width: 1200px) {
+  @screen xl {
     width: 1140px;
   }
-
-  @media screen and (min-width: 1400px) {
+  @screen xxl {
     width: 1320px;
   }
 }

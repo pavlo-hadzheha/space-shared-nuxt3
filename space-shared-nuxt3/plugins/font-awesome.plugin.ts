@@ -27,10 +27,14 @@ import {
   faFileExcel as farFileExcel,
   faFileWord as farFileWord,
   faFilePdf as farFilePdf,
-  faFileVideo as farFileVideo,
+  faFileVideo as farFileVideo
 } from '@fortawesome/free-regular-svg-icons'
 
 import {
+  faArrowLeft as fasArrowLeft,
+  faSignIn as fasSignIn,
+  faSignInAlt as fasSignInAlt,
+  faMagnifyingGlassLocation as fasMagnifyingGlassLocation,
   faMapMarked as fasMapMarked,
   faBuilding as fasBuilding,
   faHome as fasHome,
@@ -119,7 +123,8 @@ const FontAwesomeIconsList = {
   fasNotesMedical,
   fasChalkboard,
   fasBuilding,
-fasMapMarked,
+  fasMapMarked,
+  fasArrowLeft,
 
   farBookmark,
   farCheckCircle,
@@ -138,7 +143,10 @@ fasMapMarked,
   farFilePdf,
   farFileVideo,
 
+  fasSignIn,
+  fasSignInAlt,
   fasHome,
+  fasMagnifyingGlassLocation,
   fasChalkboardTeacher,
   fasPlay,
   fasCheckCircle,
@@ -209,9 +217,9 @@ const IconComponent = defineComponent({
     if (this.name) {
       if (Array.isArray(this.name)) {
         const iconToRender = this.name.find(([, key]) => key)
-        return iconToRender ? h(FontAwesomeIcon, { icon: iconToRender[0] }) : null
+        return iconToRender ? h(FontAwesomeIcon as any, { icon: iconToRender[0] }) : null
       } else {
-        return h(FontAwesomeIcon, { icon: this.name })
+        return h(FontAwesomeIcon as any, { icon: this.name })
       }
     } else {
       return null

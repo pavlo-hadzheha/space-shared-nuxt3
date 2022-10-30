@@ -1,33 +1,48 @@
 <template>
   <button
+    ref="button"
     :class="[
       'btn',
-      'random',
       {
-        'disabled': disabled,
+        disabled: disabled,
         'plain-text': text,
-        ...sizeClasses
-      }
+        'btn--responsive': responsive && !size,
+        ['btn--' + size]: !!size
+      },
     ]"
+    @mousedown="onMousedown"
+    @mouseup="onMouseup"
   >
     <slot />
   </button>
 </template>
 
 <script setup lang="ts">
-import { EButtonSize, EComponentType, TIndexedObject } from '~~/types'
-import { colors } from '~~/tailwind'
-const { $mq } = useNuxtApp()
+import { EButtonSize, EComponentType } from '@/types'
 
-const props = withDefaults(defineProps<{
-  responsive?: boolean
-  size?: EButtonSize
-  disabled?: boolean
-  text?: boolean
-  type?: EComponentType
-}>(), {
-  type: EComponentType.PRIMARY
-})
+const colors = {
+  transparent: 'transparent',
+  success: '#70E0DE',
+  primary: '#F30067',
+  danger: '#FD3E3E',
+  disabled: '#C0C4CC',
+  info: '#696969'
+}
+
+const props = withDefaults(
+  defineProps<{
+    responsive?: boolean
+    size?: EButtonSize
+    disabled?: boolean
+    text?: boolean
+    type?: EComponentType
+  }>(),
+  {
+    type: EComponentType.PRIMARY
+  }
+)
+
+const button = ref<TNullableField<HTMLButtonElement>>()
 
 const textColor = computed(() => {
   if (props.text) {
@@ -44,35 +59,26 @@ const backgroundColor = computed(() => {
     return colors?.[props.type] || '#000'
   }
 })
-const sizeClasses = ref<TIndexedObject<boolean>>({})
-function updateSizeClasses () {
-  const { responsive } = props
-  sizeClasses.value = {
-    ['btn-' + 'xxl']: $mq.xxl && responsive,
-    ['btn-' + 'xl']: $mq.xl && responsive,
-    ['btn-' + 'lg']: $mq.lg && responsive,
-    ['btn-' + 'md']: $mq.md && responsive,
-    ['btn-' + 'sm']: $mq.sm && responsive
+
+function onMousedown (_event: MouseEvent) {
+  const target = _event.target as HTMLButtonElement
+  if (target) {
+    target.style.opacity = 0.6
   }
 }
 
-watch($mq, updateSizeClasses)
-
-onMounted(() => {
-  const { responsive } = props
-  sizeClasses.value = {
-    ['btn-' + 'xxl']: $mq.xxl && responsive,
-    ['btn-' + 'xl']: $mq.xl && responsive,
-    ['btn-' + 'lg']: $mq.lg && responsive,
-    ['btn-' + 'md']: $mq.md && responsive,
-    ['btn-' + 'sm']: $mq.sm && responsive
+function onMouseup (_event: MouseEvent) {
+  const target = _event.target as HTMLButtonElement
+  if (target) {
+    target.style.opacity = 1
   }
-})
+}
+
 </script>
 
 <style scoped lang="scss">
 .btn {
-  @apply py-[0.5em] px-[1.4em] rounded-5 cursor-pointer text-12;
+  @apply py-[0.5em] px-[1.4em] rounded-md cursor-pointer text-xs;
   @apply border-none transition-all duration-300 ease-in;
   color: v-bind(textColor);
   background-color: v-bind(backgroundColor);
@@ -80,7 +86,7 @@ onMounted(() => {
   &.disabled {
     @apply cursor-not-allowed;
     background-color: v-bind('backgroundColor + "88"');
-    &.plain-text {
+    &.btn-text {
       color: v-bind('textColor + "88"');
     }
   }
@@ -91,27 +97,34 @@ onMounted(() => {
   }
 
   &.plain-text:hover:not(.disabled) {
-    color: v-bind('textColor + "88"')
+    color: v-bind('textColor + "88"');
   }
 
   & + .btn {
-    @apply mr-10;
+    @apply mr-3;
   }
+  &--sm {@apply text-xs}
+  &--md {@apply text-sm}
+  &--lg {@apply text-[16px]}
+  &--xl {@apply text-xl}
+  &--xxl {@apply text-2xl}
 
-  &-sm {
-    @apply text-12;
-  }
-  &-md {
-    @apply text-14;
-  }
-  &-lg {
-    @apply text-16;
-  }
-  &-xl {
-    @apply text-20;
-  }
-  &-xxl {
-    @apply text-24;
+  &--responsive {
+    @screen sm {
+      @apply text-xs;
+    }
+    @screen md {
+      @apply text-sm;
+    }
+    @screen lg {
+      @apply text-[16px];
+    }
+    @screen xl {
+      @apply text-xl;
+    }
+    @screen xxl {
+      @apply text-2xl;
+    }
   }
 }
 </style>

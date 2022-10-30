@@ -24,17 +24,17 @@ definePageMeta({
         <div class="home-top-content">
           <h1 class="home-top-content-title">Work from Anywhere</h1>
           <div class="home-top-content-actions">
-            <a class="btn btn-regular" href="#bigTitle">
-              <el-button
+            <a href="#bigTitle">
+              <AppButton
                 :type="$componentType.PRIMARY"
-                :size="$componentSize.LARGE"
-              >For individuals</el-button>
+                responsive
+              >For business</AppButton>
             </a>
-            <a class="btn btn-regular" href="#forBusiness">
-              <el-button
+            <a href="#bigTitle2">
+              <AppButton
                 :type="$componentType.PRIMARY"
-                :size="$componentSize.LARGE"
-              >For business</el-button>
+                responsive
+              >For individuals</AppButton>
             </a>
           </div>
         </div>
@@ -63,21 +63,21 @@ definePageMeta({
               </p>
               <div class="block-info-actions">
                 <NuxtLink>
-                  <el-button
+                  <AppButton
                     :type="$componentType.PRIMARY"
-                    :size="$componentSize.LARGE"
+                    responsive
                   >
                     Register
-                  </el-button>
+                  </AppButton>
                 </NuxtLink>
                 <NuxtLink>
-                  <el-button
+                  <AppButton
                     :type="$componentType.PRIMARY"
-                    :size="$componentSize.LARGE"
-                    link
+                    responsive
+                    text
                   >
                     See more
-                  </el-button>
+                  </AppButton>
                 </NuxtLink>
               </div>
             </div>
@@ -148,6 +148,7 @@ definePageMeta({
           </div>
         </div>
         <div id="forBusiness" class="block">
+          <h2 id="bigTitle2" class="big-title">Try it out</h2>
           <h3 class="block-title">For individuals</h3>
           <h4 class="block-subtitle text-primary">Affordable and flexible workspaces, anywhere</h4>
           <div class="block-gist">
@@ -227,21 +228,21 @@ definePageMeta({
               </p>
               <div class="block-info-actions">
                 <NuxtLink>
-                  <el-button
+                  <AppButton
                     :type="$componentType.PRIMARY"
-                    :size="$componentSize.LARGE"
+                    responsive
                   >
-                    Sign Up
-                  </el-button>
+                    Sign up
+                  </AppButton>
                 </NuxtLink>
                 <NuxtLink>
-                  <el-button
+                  <AppButton
                     :type="$componentType.PRIMARY"
-                    :size="$componentSize.LARGE"
-                    link
+                    responsive
+                    text
                   >
                     See more
-                  </el-button>
+                  </AppButton>
                 </NuxtLink>
               </div>
             </div>
@@ -259,7 +260,7 @@ definePageMeta({
 
     <section class="section newsletter">
       <h3 class="big-title">Sign up to out newsletter below:</h3>
-      <el-form class="mx-auto">
+      <el-form class="mx-auto" @submit.prevent>
         <el-form-item>
           <el-input
             :size="$componentSize.LARGE"
@@ -267,13 +268,13 @@ definePageMeta({
           />
         </el-form-item>
         <el-form-item>
-          <el-button
+          <AppButton
             :type="$componentType.PRIMARY"
-            :size="$componentSize.LARGE"
+            :size="$buttonSize.LG"
             class="w-full"
           >
             Subscribe
-          </el-button>
+          </AppButton>
         </el-form-item>
       </el-form>
     </section>
@@ -329,10 +330,6 @@ definePageMeta({
       display: flex;
       justify-content: center;
       gap: 20px;
-
-      .btn {
-        font-size: 24px;
-      }
     }
   }
 
@@ -357,16 +354,16 @@ definePageMeta({
 
     .block-title {
       font-size: calc((40 / 16) * 1rem);
-      @apply mb-16;
+      @apply mb-4;
     }
 
     .block-subtitle {
-      @apply text-[2rem] mb-16 text-primary;;
+      @apply text-[2rem] mb-4 text-primary;;
       font-family: Nunito-Bold;
     }
 
     .block-gist {
-      @apply flex items-stretch mt-16 gap-30;
+      @apply flex items-stretch mt-4 gap-8;
 
       .block-image {
         height: 100%;
@@ -390,9 +387,6 @@ definePageMeta({
           display: flex;
           justify-content: space-between;
 
-          .btn {
-            font-size: 1.25rem;
-          }
         }
       }
     }
@@ -435,7 +429,7 @@ definePageMeta({
 
 .newsletter {
   width: min(70%, 600px);
-  @apply mb-100 mx-auto;
+  @apply mb-4 mx-auto;
   .big-title {
     font-size: 30px;
     text-align: center;
@@ -520,12 +514,6 @@ definePageMeta({
       &-title {
         font-size: 36px;
       }
-
-      &-actions {
-        .btn {
-          font-size: 18px;
-        }
-      }
     }
   }
 
@@ -538,16 +526,6 @@ definePageMeta({
 }
 
 @media screen and (max-width: 576px) {
-  .home-top {
-    &-content {
-      &-actions {
-        .btn {
-          font-size: 14px;
-        }
-      }
-    }
-  }
-
   .about {
     .block {
       .block-title {
@@ -566,11 +544,6 @@ definePageMeta({
             margin-bottom: 1rem;
           }
 
-          &-actions {
-            .btn {
-              font-size: 1rem;
-            }
-          }
         }
       }
     }
