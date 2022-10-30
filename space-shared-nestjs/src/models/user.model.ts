@@ -1,5 +1,11 @@
 import { Column, Entity, ObjectIdColumn } from "typeorm"
 
+export enum Rule {
+    USER = 1,
+    HOST = 2,
+    ADMIN = 3
+  }
+
 @Entity()
 export class User {
     @ObjectIdColumn({ name: '_id' })
@@ -16,4 +22,14 @@ export class User {
 
     @Column()
     public lastName: string
+    
+    @Column()
+    public company?: string
+
+    @Column({
+        type: 'enum',
+        enum: Rule,
+        default: Rule.USER
+      })
+    public rule: Rule
 }
