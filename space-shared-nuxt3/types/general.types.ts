@@ -1,4 +1,3 @@
-
 export type TIndexedObject<T = any> = {
   [key: string]: T
 }
@@ -40,4 +39,42 @@ export enum EButtonSize {
 export interface INavigation {
   label: string
   name: string
+}
+
+export interface ISpaceFeature {
+  name: string
+  id: null
+}
+
+export interface ISpaceCategory {
+  name: string
+  id: null
+}
+
+export interface ICountry {
+  country: string
+  id: number
+}
+
+export interface IWeekday {
+  label: string
+  shortLabel: string
+  id: number
+}
+
+export interface IDayTimeSpan {
+  available: boolean
+  order: number
+  from: string
+  to: string
+}
+
+export interface ISchedule {
+  sunday: IDayTimeSpan
+  monday: IDayTimeSpan
+  tuesday: IDayTimeSpan
+  wednesday: IDayTimeSpan
+  thursday: IDayTimeSpan
+  friday: IDayTimeSpan
+  saturday: IDayTimeSpan
 }
