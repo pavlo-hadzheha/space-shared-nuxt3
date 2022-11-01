@@ -33,6 +33,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@pinia/nuxt": "^0.4.3",
     "element-plus": "^2.2.9",
     "vue-responsive-components": "^0.2.3"
   }

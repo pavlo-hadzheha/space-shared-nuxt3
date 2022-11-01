@@ -1,4 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
@@ -14,12 +13,16 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/tailwindcss',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }]
     // './modules/icon-module'
   ],
   buildModules: [
     '@vueuse/nuxt'
   ],
+  alias: {
+    pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs'
+  },
 
   vite: {
     plugins: [

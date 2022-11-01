@@ -5,12 +5,22 @@ export type TIndexedObject<T = any> = {
 export type TNullableField<T> = T | null
 export type TCallbackFn<T extends unknown[] = [], R = void> = (...args: T) => R
 
+export enum EGlobalStateName {
+  AUTH = 'auth'
+}
+
 export enum EBreakpoint {
   XXL = 1320,
   XL = 1140,
   LG = 960,
   MD = 720,
   SM = 540
+}
+
+export enum EUserRule {
+  USER = 1,
+  HOST = 2,
+  ADMIN = 3
 }
 
 export enum EComponentType {
@@ -67,6 +77,15 @@ export interface IDayTimeSpan {
   order: number
   from: string
   to: string
+}
+
+export interface IUser {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  company?: string
+  rule: EUserRule
 }
 
 export interface ISchedule {
