@@ -26,6 +26,9 @@ export class User {
     @Column()
     public company?: string
 
+    @Column()
+    public phone?: string
+
     @Column({
         type: 'enum',
         enum: Rule,

@@ -21,6 +21,8 @@ export class RegisterDto {
     lastName: string;
     @ApiPropertyOptional()
     company?: string;
+    @ApiPropertyOptional()
+    phone?: string;
     @ApiProperty({ enum: [Rule.USER, Rule.HOST, Rule.ADMIN] })
     rule: Rule;
 }
@@ -37,6 +39,8 @@ export class UserResponse {
     lastName: string;
     @ApiPropertyOptional()
     company?: string;
+    @ApiPropertyOptional()
+    phone?: string;
     @ApiProperty({ enum: [Rule.USER, Rule.HOST, Rule.ADMIN] })
     rule: Rule;
 }
