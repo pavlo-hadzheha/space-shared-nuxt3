@@ -7,6 +7,7 @@ import { CategoryModule } from './category/category.module';
 import { FavoriteModule } from './favorite/favorite.module';
 import { FeatureModule } from './feature/feature.module';
 import { PhotoModule } from './photo/photo.module';
+import { ReviewModule } from './review/review.module';
 import { SpaceModule } from './space/space.module';
 import { UserModule } from './user/user.module';
 
@@ -32,6 +33,7 @@ import { UserModule } from './user/user.module';
     CategoryModule,
     FeatureModule,
     FavoriteModule,
+    ReviewModule,
     PhotoModule,
   ],
 })
