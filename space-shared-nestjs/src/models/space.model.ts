@@ -1,37 +1,59 @@
-import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import { AutoMap } from '@automapper/classes';
+import { Schedule, SpaceLocation } from 'src/space/dto/space.dto';
+import { Column, ManyToOne, JoinColumn, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import { Category } from './category.model';
 
 @Entity()
 export class Space {
-    @ObjectIdColumn({ name: '_id' })
-    id?: string;
+    @AutoMap()
+    @ObjectIdColumn()
+    _id: ObjectID;
 
+    @AutoMap()
     @Column()
-    public created_by: string;
+    categoryId: string;
 
+    @AutoMap()
     @Column()
-    public category: string;
+    title: string;
 
+    @AutoMap()
     @Column()
-    public title: string;
+    description: string;
 
+    @AutoMap()
     @Column()
-    public description: string;
+    location: SpaceLocation;
 
+    @AutoMap()
     @Column()
-    public hourly_rate?: number;
+    opened_at: Schedule;
 
+    @AutoMap()
     @Column()
-    public phone?: string;
+    hourly_rate?: number;
 
+    @AutoMap()
     @Column()
-    public images: Array<string>;
+    phone?: string;
 
+    @AutoMap()
     @Column()
-    public features: Array<number>;
+    images: Array<string>;
 
+    @AutoMap()
     @Column()
-    public approved: boolean;
+    features: Array<string>;
 
+    @AutoMap()
     @Column()
-    public approved_by_admin: boolean;
+    created_by: string;
+
+    @AutoMap()
+    @Column()
+    approved: boolean;
+
+    @AutoMap()
+    @Column()
+    approved_by_admin: boolean;
 }

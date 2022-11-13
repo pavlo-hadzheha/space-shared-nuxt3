@@ -4,6 +4,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { CategoryModule } from './category/category.module';
+import { FavoriteModule } from './favorite/favorite.module';
 import { FeatureModule } from './feature/feature.module';
 import { PhotoModule } from './photo/photo.module';
 import { SpaceModule } from './space/space.module';
@@ -30,6 +31,7 @@ import { UserModule } from './user/user.module';
     SpaceModule,
     CategoryModule,
     FeatureModule,
+    FavoriteModule,
     PhotoModule,
   ],
 })

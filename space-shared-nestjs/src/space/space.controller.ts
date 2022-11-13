@@ -17,18 +17,16 @@ export class SpacesController {
 
     @ApiOkResponse({ type: [ViewSpaceDto] })
     @Get('/all')
-    async getAllSpaces(
+    getAllSpaces(
     ): Promise<ViewSpaceDto[]> {
-        const spaces = await this.spaceService.getAll();
-
-        return spaces.map(space => space);
+        return this.spaceService.getAll();
     }
 
     @ApiOkResponse({ type: ViewSpaceDto })
     @Get('/:spaceId')
     getSpaceById(
         @Param('spaceId') spaceId: string
-    ): Promise<ViewSpaceDto> {
+    ): Promise<EditSpaceDto> {
         return this.spaceService.getById(spaceId)
     }
 
@@ -37,25 +35,20 @@ export class SpacesController {
     @Post()
     createSpace(
         @CurrentUser() user: User, @Body() space: CreateSpaceDto): Promise<EditSpaceDto> {
-
-        return this.spaceService.create({ ...space, 
-            approved: false, 
-            approved_by_admin: false, 
-            created_by: user.id, 
-        });
+        return this.spaceService.create(space, user);
     }
 
     @ApiOkResponse({ type: EditSpaceDto })
     @UseGuards(AuthGuard)
     @Put()
-    async updateSpace(@Body() space: EditSpaceDto): Promise<Space> {
-        return await this.spaceService.update(space);
+    updateSpace(@Body() space: EditSpaceDto): Promise<EditSpaceDto> {
+        return this.spaceService.update(space);
     }
 
     @ApiOkResponse({ type: Boolean })
     @UseGuards(AuthGuard)
     @Delete('/:spaceId')
-    async removeSpace(@Param('spaceId') spaceId: string): Promise<boolean> {
-        return await this.spaceService.remove(spaceId);
+    removeSpace(@Param('spaceId') spaceId: string): Promise<boolean> {
+        return this.spaceService.remove(spaceId);
     }
 }

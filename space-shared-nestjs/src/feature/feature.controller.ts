@@ -28,21 +28,21 @@ export class FeaturesController {
     }
 
     @ApiCreatedResponse({ type: EditFeatureDto })
-    //@UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Post()
     createFeature(@Body() feature: CreateFeatureDto): Promise<EditFeatureDto> {
         return this.featureService.create(feature);
     }
 
     @ApiOkResponse({ type: EditFeatureDto })
-    //@UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Put()
     updateFeature(@Body() feature: EditFeatureDto): Promise<EditFeatureDto> {
         return this.featureService.update(feature);
     }
 
     @ApiOkResponse({ type: Boolean })
-    //@UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Delete('/:featureId')
     removeFeature(@Param('featureId') featureId: string): Promise<boolean> {
         return this.featureService.remove(featureId);

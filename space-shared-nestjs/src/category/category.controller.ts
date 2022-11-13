@@ -28,21 +28,21 @@ export class CategoriesController {
     }
 
     @ApiCreatedResponse({ type: EditCategoryDto })
-    //@UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Post()
     createCategory(@Body() category: CreateCategoryDto): Promise<EditCategoryDto> {
         return this.categoryService.create(category);
     }
 
     @ApiOkResponse({ type: EditCategoryDto })
-    //@UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Put()
     updateCategory(@Body() category: EditCategoryDto): Promise<EditCategoryDto> {
         return this.categoryService.update(category);
     }
 
     @ApiOkResponse({ type: Boolean })
-    //@UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Delete('/:categoryId')
     removeCategory(@Param('categoryId') categoryId: string): Promise<boolean> {
         return this.categoryService.remove(categoryId);
