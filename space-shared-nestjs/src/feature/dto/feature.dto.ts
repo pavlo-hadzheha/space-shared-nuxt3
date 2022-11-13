@@ -1,7 +1,7 @@
 import { AutoMap } from '@automapper/classes';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateCategoryDto {
+export class CreateFeatureDto {
     @AutoMap()
     @ApiProperty()
     name: string;
@@ -11,7 +11,7 @@ export class CreateCategoryDto {
     path: string;
 }
 
-export class EditCategoryDto extends CreateCategoryDto {
+export class EditFeatureDto extends CreateFeatureDto {
     @AutoMap()
     @ApiProperty()
     id: string;

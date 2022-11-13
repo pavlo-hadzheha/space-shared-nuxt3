@@ -2,7 +2,7 @@ import { AutoMap } from '@automapper/classes';
 import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity()
-export class Category {
+export class Feature {
     @AutoMap()
     @ObjectIdColumn()
     _id: ObjectID;

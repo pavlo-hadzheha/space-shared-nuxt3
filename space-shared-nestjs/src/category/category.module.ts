@@ -5,11 +5,12 @@ import { Category } from 'src/models/category.model';
 import { User } from 'src/models/user.model';
 import { UserService } from 'src/user/user.service';
 import { CategoriesController } from './category.controller';
+import { CategoryProfile } from './category.profile';
 import { CategoryService } from './category.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Category, User])],
   controllers: [CategoriesController],
-  providers: [CategoryService, AuthService, UserService]
+  providers: [CategoryService, AuthService, UserService, CategoryProfile]
 })
 export class CategoryModule {}
