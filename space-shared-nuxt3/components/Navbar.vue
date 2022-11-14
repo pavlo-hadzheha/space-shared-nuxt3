@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const router = useRouter()
+const auth = useAuth()
 
 const navigation = router.options.routes
   .slice()
@@ -37,15 +38,19 @@ const navigation = router.options.routes
             </span>
           </div>
           <div class="nav__actions">
-            <AppButton v-if="false" :size="$buttonSize.MD">
-              <Icon :name="$icons.fasUserCog" />
-            </AppButton>
-            <NuxtLink to="/auth">
-              <AppButton :size="$buttonSize.MD">
-                <Icon :name="$icons.fasSignIn" />
-                Sign In/Sign Up
-              </AppButton>
-            </NuxtLink>
+            <ClientOnly>
+              <NuxtLink v-if="auth.isLoggedIn" to="/me">
+                <AppButton :size="$buttonSize.MD">
+                  <Icon :name="$icons.fasUserCog" />
+                </AppButton>
+              </NuxtLink>
+              <NuxtLink v-else to="/auth">
+                <AppButton :size="$buttonSize.MD">
+                  <Icon :name="$icons.fasSignIn" />
+                  Sign In/Sign Up
+                </AppButton>
+              </NuxtLink>
+            </ClientOnly>
           </div>
         </nav>
       </ElContainer>
@@ -60,14 +65,18 @@ const navigation = router.options.routes
           </div>
 
           <div class="nav__actions">
-            <AppButton v-if="false" :size="$buttonSize.MD">
-              <Icon :name="$icons.fasUserCog" />
-            </AppButton>
-            <NuxtLink to="/auth">
-              <AppButton :size="$buttonSize.MD">
-                <Icon :name="$icons.fasSignIn" />
-              </AppButton>
-            </NuxtLink>
+            <ClientOnly>
+              <NuxtLink v-if="auth.isLoggedIn" to="/me">
+                <AppButton :size="$buttonSize.MD">
+                  <Icon :name="$icons.fasUserCog" />
+                </AppButton>
+              </NuxtLink>
+              <NuxtLink v-else to="/auth">
+                <AppButton :size="$buttonSize.MD">
+                  <Icon :name="$icons.fasSignIn" />
+                </AppButton>
+              </NuxtLink>
+            </ClientOnly>
           </div>
         </nav>
       </ElContainer>

@@ -2,6 +2,7 @@
 // DON'T CHANGE IT IN ORDER TO MAKE IT PROPERLY WORK!
 export const routeNames = {
   spaces: 'spaces',
+  me: 'me',
   map: 'map',
   index: 'index',
   auth: 'auth',

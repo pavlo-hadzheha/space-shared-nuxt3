@@ -7,6 +7,11 @@ import { buildComponentsAutoImports, buildScriptsAutoImports } from './build-con
 const lifecycle = process.env.npm_lifecycle_event
 
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      baseUrl: 'http://localhost:4000'
+    }
+  },
   css: [
     '@/assets/styles/main.scss'
   ],
@@ -24,6 +29,9 @@ export default defineNuxtConfig({
     pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs'
   },
 
+  imports: {
+    dirs: ['./stores']
+  },
   vite: {
     plugins: [
       Components({

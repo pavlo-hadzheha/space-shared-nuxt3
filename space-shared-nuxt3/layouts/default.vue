@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading="general.loading">
     <ElContainer>
       <ElHeader>
         <slot name="pageHeader">
@@ -30,6 +30,7 @@
 </template>
 
 <script setup lang="ts">
+const general = useGeneral()
 // import { EBreakpoint } from '~~/types'
 
 // const queries = {

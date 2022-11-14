@@ -40,6 +40,7 @@
           </div>
         </div>
         <div
+          v-loading="loading"
           class="container__inner__slider"
           :class="{'is-right': visibleForm === ELocalForm.SIGN_UP}"
         >
@@ -114,7 +115,18 @@
                 class="w-full"
                 label-position="top"
               >
-                <h1 class="text-info text-3xl mb-10">Sign Up</h1>
+                <h1 class="text-info text-2xl mb-4 flex gap-5">
+                  Sign Up as
+                  <el-form-item required prop="rule">
+                    <el-radio-group
+                      v-model="model.rule"
+                      :size="$componentSize.DEFAULT"
+                    >
+                      <el-radio-button class="el-radio-button--success" :label="EUserRule.HOST">Host</el-radio-button>
+                      <el-radio-button class="el-radio-button--success" :label="EUserRule.USER">User</el-radio-button>
+                    </el-radio-group>
+                  </el-form-item>
+                </h1>
                 <el-form-item
                   :prop="data.firstName.prop"
                   :label="data.firstName.label"
@@ -153,7 +165,7 @@
                   :label="data.password.label"
                 >
                   <el-input
-                    v-model="model.email"
+                    v-model="model.password"
                     type="password"
                     :size="$componentSize.SMALL"
                     show-password
@@ -176,7 +188,7 @@
 </template>
 
 <script setup lang="ts">
-import { EComponentType } from '@/types'
+import { EComponentType, EUserRule, IRegisterPayload } from '@/types'
 
 enum ELocalForm {
   SIGN_IN = 1,
@@ -190,18 +202,19 @@ definePageMeta({
 
 const buttonType = ref<EComponentType>(EComponentType.SUCCESS)
 const visibleForm = ref<ELocalForm>(ELocalForm.SIGN_IN)
+const loading = ref(false)
 
 const useFormSignIn = (() => {
   const model = reactive(create())
   const config = useFormConfig({
-    email: { label: 'Email', type: 'email', required: true },
+    email: { label: 'Email', type: 'text', required: true },
     password: { label: 'Password', required: true }
   })
 
   function create () {
     return {
-      email: '',
-      password: ''
+      email: 'string',
+      password: 'string'
     }
   }
   return {
@@ -220,12 +233,14 @@ const useFormSignUp = (() => {
     password: { label: 'Password', required: true }
   })
 
-  function create () {
+  function create (): IRegisterPayload {
     return {
-      role: null,
+      rule: EUserRule.USER,
       firstName: '',
       lastName: '',
       email: '',
+      phone: '',
+      company: null,
       password: ''
     }
   }
@@ -238,10 +253,20 @@ const useFormSignUp = (() => {
 
 async function signIn () {
   await useFormSignIn.config.validate()
+  loading.value = true
+  try {
+    await useAuth().login(useFormSignIn.model)
+    useRouter().push('/')
+  } finally {
+    loading.value = false
+  }
 }
 
 async function signUp () {
+  console.log(useFormSignUp.model)
   await useFormSignUp.config.validate()
+  await useAuth().register(useFormSignUp.model)
+  useRouter().push('/')
 }
 
 watch(visibleForm, (_form) => {
@@ -263,7 +288,7 @@ watch(visibleForm, (_form) => {
       @apply relative w-[800px] h-[500px] m-5;
       &__slider {
         @apply absolute left-0 top-0 h-full w-1/2 bg-white;
-        @apply z-10 flex justify-center items-center overflow-x-hidden;
+        @apply z-10 flex justify-center items-center overflow-hidden;
         box-shadow: 0 5px 45px rgba(0,0,0,0.15);
         transition: left 0.5s ease;
         &.is-right {

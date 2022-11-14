@@ -20,9 +20,7 @@ import { UserModule } from './user/user.module';
       type: 'mongodb',
       url: 'mongodb+srv://spaceshared:spaceshared@spaceshared.cbomnxj.mongodb.net/?retryWrites=true&w=majority',
       database: 'test',
-      entities: [
-        __dirname + '/**/*.model{.ts,.js}',
-      ],
+      entities: [__dirname + '/**/*.model{.ts,.js}'],
       ssl: true,
       useUnifiedTopology: true,
       useNewUrlParser: true,
@@ -37,4 +35,4 @@ import { UserModule } from './user/user.module';
     PhotoModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}

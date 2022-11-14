@@ -6,7 +6,8 @@ export type TNullableField<T> = T | null
 export type TCallbackFn<T extends unknown[] = [], R = void> = (...args: T) => R
 
 export enum EGlobalStateName {
-  AUTH = 'auth'
+  AUTH = 'auth',
+  GENERAL = 'general'
 }
 
 export enum EBreakpoint {
@@ -85,6 +86,7 @@ export interface IUser {
   firstName: string
   lastName: string
   company?: string
+  phone?: string
   rule: EUserRule
 }
 
@@ -96,4 +98,19 @@ export interface ISchedule {
   thursday: IDayTimeSpan
   friday: IDayTimeSpan
   saturday: IDayTimeSpan
+}
+
+export interface IRegisterPayload {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  company: TNullableField<string>
+  phone: string
+  rule: EUserRule
+}
+
+export interface ILoginPayload {
+  email: string
+  password: string
 }

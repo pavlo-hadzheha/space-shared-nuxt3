@@ -225,7 +225,8 @@ const useForm = (() => {
                   class="grid grid-cols-3 grid-rows-1"
                 >
                   <div>
-                    <el-switch v-model="_config.availabel" />
+                    <el-switch v-model="_config.available" />
+                    {{ _day }}
                   </div>
                   <div>
                     <el-time-picker v-model="_config.from" placeholder="From..." />

@@ -1,0 +1,7 @@
+@use "element-plus/theme-chalk/src/radio-button";
+
+.el-radio-button {
+    &--success {
+        --el-color-primary: #70E0DE
+    }
+}

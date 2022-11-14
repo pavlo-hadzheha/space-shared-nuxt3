@@ -60,13 +60,13 @@ export const countries = {
 
 export const weekdays = {
   list: [
-    { label: 'monday', id: 1, shortLabel: 'Mon' },
-    { label: 'tuesday', id: 2, shortLabel: 'Tue' },
-    { label: 'wednesday', id: 3, shortLabel: 'Wed' },
-    { label: 'thursday', id: 4, shortLabel: 'Thu' },
-    { label: 'friday', id: 5, shortLabel: 'Fri' },
-    { label: 'saturday', id: 6, shortLabel: 'Sat' },
-    { label: 'sunday', id: 7, shortLabel: 'Sun' }
+    { label: 'Monday', id: 1, shortLabel: 'Mon' },
+    { label: 'Tuesday', id: 2, shortLabel: 'Tue' },
+    { label: 'Wednesday', id: 3, shortLabel: 'Wed' },
+    { label: 'Thursday', id: 4, shortLabel: 'Thu' },
+    { label: 'Friday', id: 5, shortLabel: 'Fri' },
+    { label: 'Saturday', id: 6, shortLabel: 'Sat' },
+    { label: 'Sunday', id: 7, shortLabel: 'Sun' }
   ],
   get (_id: number): TNullableField<IWeekday> {
     return this.list.find(_item => _item.id === _id) || null
