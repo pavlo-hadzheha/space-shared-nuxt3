@@ -1,0 +1,9 @@
+.mapbox-map {
+  .ss-popup {
+    border-radius: 5px !important;
+    .mapboxgl-popup-content {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@use "element-plus/theme-chalk/src/rate";
+
+.el-rate {
+  --el-rate-icon-margin: 0px;
+
+  &.el-rate--small {
+    .el-rate__icon {
+      --el-rate-icon-size: 18px;
+      //@apply text-20 #{!important};
+    }
+  }
+
+  &.el-rate--default {
+    .el-rate__icon {
+      --el-rate-icon-size: 23px;
+      //@apply text-30 #{!important};
+    }
+  }
+
+  &.el-rate--large {
+    .el-rate__icon {
+      --el-rate-icon-size: 27px;
+      //@apply text-40 #{!important};
+    }
+  }
+}
