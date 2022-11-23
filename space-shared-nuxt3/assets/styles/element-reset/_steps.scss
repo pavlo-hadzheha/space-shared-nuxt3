@@ -1,2 +1,10 @@
 @use "element-plus/theme-chalk/src/steps";
 @use "element-plus/theme-chalk/src/step";
+
+.el-steps {
+    .el-step {
+        &__icon {
+            @apply cursor-pointer z-0 #{!important};
+        }
+    }
+}

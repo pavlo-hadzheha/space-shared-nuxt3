@@ -1,3 +1,10 @@
-POST localhost:4000/
+POST http://localhost:4000/features
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNWVjZWU2MDA5ZmJjMzgwZWI2YjlhNyIsImVtYWlsIjoic3RyaW5nIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY2ODUxNjA5MSwiZXhwIjoxNjY4NTE5NjkxfQ.AqgCaX89nZrifNgq2wJaT_zlb2MimhJRWxrvHiFmKXw
+content-Type: application/json
+accept: application/json
+
+{
+    label: "Fast Wifi (>50mbps)"
+}
 
 

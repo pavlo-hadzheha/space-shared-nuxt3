@@ -3,23 +3,27 @@ import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity()
 export class Review {
-    @AutoMap()
-    @ObjectIdColumn()
-    _id: ObjectID;
+  @AutoMap()
+  @ObjectIdColumn()
+  _id: ObjectID;
 
-    @AutoMap()
-    @Column()
-    userId: string;
+  @AutoMap()
+  @Column()
+  userId: string;
 
-    @AutoMap()
-    @Column()
-    spaceId: string;
+  @AutoMap()
+  @Column()
+  leftOn: string;
 
-    @AutoMap()
-    @Column()
-    message?: string;
+  @AutoMap()
+  @Column()
+  spaceId: string;
 
-    @AutoMap()
-    @Column()
-    count: number;
+  @AutoMap()
+  @Column()
+  message?: string;
+
+  @AutoMap()
+  @Column()
+  count: number;
 }

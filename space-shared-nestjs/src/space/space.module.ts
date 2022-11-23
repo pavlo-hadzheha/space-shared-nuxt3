@@ -13,6 +13,12 @@ import { SpaceService } from './space.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Space, Category, User])],
   controllers: [SpacesController],
-  providers: [SpaceService, AuthService, UserService, SpaceProfile, CategoryService]
+  providers: [
+    SpaceService,
+    AuthService,
+    UserService,
+    SpaceProfile,
+    CategoryService,
+  ],
 })
 export class SpaceModule {}

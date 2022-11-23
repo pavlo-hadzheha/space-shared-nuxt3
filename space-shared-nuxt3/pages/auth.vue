@@ -263,7 +263,6 @@ async function signIn () {
 }
 
 async function signUp () {
-  console.log(useFormSignUp.model)
   await useFormSignUp.config.validate()
   await useAuth().register(useFormSignUp.model)
   useRouter().push('/')

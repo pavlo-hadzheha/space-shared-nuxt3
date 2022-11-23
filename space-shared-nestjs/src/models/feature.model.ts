@@ -3,15 +3,15 @@ import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity()
 export class Feature {
-    @AutoMap()
-    @ObjectIdColumn()
-    _id: ObjectID;
+  @AutoMap()
+  @ObjectIdColumn()
+  _id: ObjectID;
 
-    @AutoMap()
-    @Column()
-    name: string;
+  @AutoMap()
+  @Column()
+  label: string;
 
-    @AutoMap()
-    @Column()
-    path: string;
+  // @AutoMap()
+  // @Column()
+  // path: string;
 }

@@ -7,7 +7,9 @@ export type TCallbackFn<T extends unknown[] = [], R = void> = (...args: T) => R
 
 export enum EGlobalStateName {
   AUTH = 'auth',
-  GENERAL = 'general'
+  GENERAL = 'general',
+  SPACES = 'spaces',
+  GEOCODE = 'geocode'
 }
 
 export enum EBreakpoint {
@@ -51,15 +53,33 @@ export interface INavigation {
   label: string
   name: string
 }
+export interface IMapView {
+  TopLeft: any
+  BottomRight: any
+}
 
 export interface ISpaceFeature {
-  name: string
-  id: null
+  label: string
+  id: string
 }
 
 export interface ISpaceCategory {
-  name: string
-  id: null
+  label: string
+  id: string
+}
+
+export interface IReviewPayload {
+  message: string
+  count: TNullableField<number>
+}
+
+export interface IReview extends IReviewPayload {
+  spaceId: string
+  userId: string
+  userFirstName: string
+  userLastName: string
+  leftOn: string | Date
+  id: string
 }
 
 export interface ICountry {
@@ -80,14 +100,11 @@ export interface IDayTimeSpan {
   to: string
 }
 
-export interface IUser {
-  email: string
-  password: string
-  firstName: string
-  lastName: string
-  company?: string
-  phone?: string
-  rule: EUserRule
+export interface IGeocodePayload {
+  country?: string
+  city?: string
+  street?: string
+  house?: string
 }
 
 export interface ISchedule {
@@ -98,6 +115,50 @@ export interface ISchedule {
   thursday: IDayTimeSpan
   friday: IDayTimeSpan
   saturday: IDayTimeSpan
+}
+
+export interface ILocation {
+  lon: string
+  lat: string
+  mapView: IMapView
+  country: string
+  countryCode: string
+  city: string
+  street: string
+  house: string
+  label: string
+}
+
+export interface IImage {
+  name: string
+  url: string
+}
+
+export interface ISpacePayload {
+  categoryId: string
+  title: string
+  description: string
+  location: ILocation
+  opened_at: ISchedule
+  hourly_rate: number
+  phone: string
+  images: IImage[]
+  features: string[]
+}
+
+export interface ISpace extends ISpacePayload {
+  books: number[]
+  id: string
+}
+
+export interface IUser {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  company?: string
+  phone?: string
+  rule: EUserRule
 }
 
 export interface IRegisterPayload {

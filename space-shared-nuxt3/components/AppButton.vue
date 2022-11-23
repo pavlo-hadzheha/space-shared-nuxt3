@@ -6,8 +6,9 @@
       {
         disabled: disabled,
         'plain-text': text,
-        'btn--responsive': responsive && !size,
-        ['btn--' + size]: !!size
+        'btn--responsive': responsive,
+        ['btn--' + size]: !!size,
+        'btn--round': round,
       },
     ]"
     @mousedown="onMousedown"
@@ -36,9 +37,11 @@ const props = withDefaults(
     disabled?: boolean
     text?: boolean
     type?: EComponentType
+    round?: boolean
   }>(),
   {
-    type: EComponentType.PRIMARY
+    type: EComponentType.PRIMARY,
+    size: EButtonSize.MD
   }
 )
 
@@ -46,7 +49,7 @@ const button = ref<TNullableField<HTMLButtonElement>>()
 
 const textColor = computed(() => {
   if (props.text) {
-    return colors?.[props.type]
+    return colors[props.type as keyof typeof colors]
   } else {
     return 'white'
   }
@@ -56,7 +59,7 @@ const backgroundColor = computed(() => {
   if (props.text) {
     return 'transparent'
   } else {
-    return colors?.[props.type] || '#000'
+    return colors[props.type as keyof typeof colors] || '#000'
   }
 })
 
@@ -73,7 +76,6 @@ function onMouseup (_event: MouseEvent) {
     target.style.opacity = '1'
   }
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -84,10 +86,31 @@ function onMouseup (_event: MouseEvent) {
   background-color: v-bind(backgroundColor);
 
   &.disabled {
-    @apply cursor-not-allowed;
+    @apply cursor-not-allowed pointer-events-none;
     background-color: v-bind('backgroundColor + "88"');
     &.btn-text {
       color: v-bind('textColor + "88"');
+    }
+  }
+
+  &--round {
+    @apply rounded-full p-0 flex items-center justify-center;
+    &.btn {
+      &--sm {
+        @apply w-6 h-6;
+      }
+      &--md {
+        @apply w-7 h-7;
+      }
+      &--lg {
+        @apply w-8 h-8;
+      }
+      &--xl {
+        @apply w-11 h-11;
+      }
+      &--xxl {
+        @apply w-11 h-11;
+      }
     }
   }
 
@@ -103,13 +126,25 @@ function onMouseup (_event: MouseEvent) {
   & + .btn {
     @apply mr-3;
   }
-  &--sm {@apply text-xs}
-  &--md {@apply text-sm}
-  &--lg {@apply text-[16px]}
-  &--xl {@apply text-xl}
-  &--xxl {@apply text-2xl}
+  &--sm {
+    @apply text-xs;
+  }
+  &--md {
+    @apply text-sm;
+  }
+  &--lg {
+    @apply text-[16px];
+  }
+  &--xl {
+    @apply text-xl;
+  }
+  &--xxl {
+    @apply text-2xl;
+  }
 
   &--responsive {
+    @apply text-xs;
+
     @screen sm {
       @apply text-xs;
     }

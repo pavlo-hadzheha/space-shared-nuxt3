@@ -1,6 +1,7 @@
 @import 'base';
 @import "element-reset";
 @import 'fonts';
+@import 'mapbox-map';
 
 
 .container {
@@ -25,6 +26,24 @@
   @screen xxl {
     width: 1320px;
   }
+}
+
+:root {
+  --scrollbar-width: 10px;
+  --scrollbar-height: 4px;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(var(--scrollbar-height));
+}
+
+::-webkit-scrollbar-thumb {
+   @apply bg-primary rounded-[5px];
+}
+
+::-webkit-scrollbar-track {
+  margin-block: 5px;
 }
 
 .container-fluid {

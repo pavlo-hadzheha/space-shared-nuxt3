@@ -11,6 +11,6 @@ import { FeatureService } from './feature.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Feature, User])],
   controllers: [FeaturesController],
-  providers: [FeatureService, AuthService, UserService, FeatureProfile]
+  providers: [FeatureService, AuthService, UserService, FeatureProfile],
 })
 export class FeatureModule {}

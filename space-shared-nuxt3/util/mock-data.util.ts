@@ -16,7 +16,6 @@ export const spaceFeatures = {
     { label: 'Step free access', id: 11 },
     { label: 'Wheelchair friendly', id: 12 },
     { label: 'WiFi', id: 13 },
-    { label: 'Step free access', id: 14 },
     { label: 'Free Tea & Coffee provided', id: 15 },
     { label: 'AV screen with HDMI', id: 16 },
     { label: 'Barista coffee', id: 17 },
@@ -24,8 +23,7 @@ export const spaceFeatures = {
     { label: 'Catering available', id: 19 },
     { label: 'Whiteboard / flipchart', id: 20 },
     { label: 'Breakout area', id: 21 },
-    { label: 'Paid Parking', id: 22 },
-    { label: 'Catering available', id: 23 }
+    { label: 'Paid Parking', id: 22 }
   ],
   get (_id: number): TNullableField<ISpaceFeature> {
     return this.list.find(_item => _item.id === _id) || null
@@ -49,7 +47,7 @@ export const countries = {
   list: orderBy([
     { country: 'Ukraine', id: 1 },
     { country: 'Poland', id: 2 },
-    { country: 'Checz Repulic', id: 3 },
+    { country: 'Czech Republic', id: 3 },
     { country: 'Slovakia', id: 4 },
     { country: 'Turkey', id: 5 }
   ], [_item => _item.country], ['asc']),
@@ -60,13 +58,13 @@ export const countries = {
 
 export const weekdays = {
   list: [
-    { label: 'Monday', id: 1, shortLabel: 'Mon' },
-    { label: 'Tuesday', id: 2, shortLabel: 'Tue' },
-    { label: 'Wednesday', id: 3, shortLabel: 'Wed' },
-    { label: 'Thursday', id: 4, shortLabel: 'Thu' },
-    { label: 'Friday', id: 5, shortLabel: 'Fri' },
-    { label: 'Saturday', id: 6, shortLabel: 'Sat' },
-    { label: 'Sunday', id: 7, shortLabel: 'Sun' }
+    { label: 'monday', id: 1, shortLabel: 'Mon' },
+    { label: 'tuesday', id: 2, shortLabel: 'Tue' },
+    { label: 'wednesday', id: 3, shortLabel: 'Wed' },
+    { label: 'thursday', id: 4, shortLabel: 'Thu' },
+    { label: 'friday', id: 5, shortLabel: 'Fri' },
+    { label: 'saturday', id: 6, shortLabel: 'Sat' },
+    { label: 'sunday', id: 7, shortLabel: 'Sun' }
   ],
   get (_id: number): TNullableField<IWeekday> {
     return this.list.find(_item => _item.id === _id) || null

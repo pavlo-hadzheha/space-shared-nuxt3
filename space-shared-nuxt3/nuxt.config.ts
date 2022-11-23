@@ -9,12 +9,23 @@ const lifecycle = process.env.npm_lifecycle_event
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      baseUrl: 'http://localhost:4000'
+      baseUrl: 'http://localhost:4000',
+      mapboxApikey: 'pk.eyJ1IjoiYml0b25kbyIsImEiOiJja3cwdWwxeTMxZmh2Mm9sY2g0a283MWljIn0.cAqVx7AR6OaGGEeP6q9aAQ',
+      geoConfig: {
+        API_KEY: '-8ipf75lS5WCQRSL7SCn7uZd2qwvItcaHibwRdkZfOs', // https://developer.here.com/projects/PROD-b7426d62-eac1-4fab-954d-f7c4f9360e75
+        GEOCODE_API: 'https://geocoder.ls.hereapi.com/6.2/geocode.json',
+        POS_API: 'https://revgeocode.search.hereapi.com/v1/revgeocode'
+      }
     }
   },
-  css: [
-    '@/assets/styles/main.scss'
-  ],
+  devServerHandlers: [],
+  css: ['@/assets/styles/main.scss'],
+  // postcss: {
+  //   plugins: {
+  //     tailwindcss: {},
+  //     autoprefixer: {}
+  //   }
+  // },
 
   modules: [
     '@nuxtjs/tailwindcss',

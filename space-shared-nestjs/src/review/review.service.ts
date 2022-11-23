@@ -8,53 +8,77 @@ import { InjectMapper } from '@automapper/nestjs';
 import { User } from 'src/models/user.model';
 import { CreateReviewDto, ViewReviewDto } from './dto/review.dto';
 import { UserService } from 'src/user/user.service';
- 
+
 @Injectable()
 export class ReviewService {
-    constructor(
-        @InjectRepository(Review) private readonly reviewRepository: MongoRepository<Review>,
-        @Inject(UserService) private userService: UserService,
-        @InjectMapper() private readonly classMapper: Mapper,
-    ) {}
+  constructor(
+    @InjectRepository(Review)
+    private readonly reviewRepository: MongoRepository<Review>,
+    @Inject(UserService) private userService: UserService,
+    @InjectMapper() private readonly classMapper: Mapper,
+  ) {}
 
-    async getByUser(user: User): Promise<ViewReviewDto[]> {
-        const reviews = this.classMapper.mapArray(await this.reviewRepository.findBy({userId: user.id.toString()}), Review, ViewReviewDto);
+  async getByUser(user: User): Promise<ViewReviewDto[]> {
+    const reviews = this.classMapper.mapArray(
+      await this.reviewRepository.findBy({ userId: user.id.toString() }),
+      Review,
+      ViewReviewDto,
+    );
 
-        for(let review of reviews) {
-            review.userFirstName = user.firstName; 
-            review.userLastName = user.lastName;
-        }
-
-        return reviews;
+    for (const review of reviews) {
+      review.userFirstName = user.firstName;
+      review.userLastName = user.lastName;
     }
 
-    async getBySpaceId(spaceId: string): Promise<ViewReviewDto[]> {
-        const reviews = this.classMapper.mapArray(await this.reviewRepository.findBy({spaceId: spaceId}), Review, ViewReviewDto);
+    return reviews;
+  }
 
-        for(let review of reviews) {
-            try {
-                const user = await this.userService.getById(review.userId);
+  async getBySpaceId(spaceId: string): Promise<ViewReviewDto[]> {
+    const reviews = this.classMapper.mapArray(
+      await this.reviewRepository.findBy({ spaceId: spaceId }),
+      Review,
+      ViewReviewDto,
+    );
 
-                review.userFirstName = user.firstName; 
-                review.userLastName = user.lastName;
-            } catch(err) {
-            }
-            
-        }
+    for (const review of reviews) {
+      try {
+        const user = await this.userService.getById(review.userId);
 
-        return reviews;
+        review.userFirstName = user.firstName;
+        review.userLastName = user.lastName;
+      } catch (err) {}
     }
 
-    async create(user: User, spaceId: string, review: CreateReviewDto): Promise<ViewReviewDto> {
-        let newReview = this.classMapper.map(await this.reviewRepository.save({_id: null, ...review, userId: user.id.toString(), spaceId: spaceId}), Review, ViewReviewDto);
+    return reviews;
+  }
 
-        newReview.userFirstName = user.firstName; 
-        newReview.userLastName = user.lastName;
+  async create(
+    user: User,
+    spaceId: string,
+    review: CreateReviewDto,
+  ): Promise<ViewReviewDto> {
+    const newReview = this.classMapper.map(
+      await this.reviewRepository.save({
+        _id: null,
+        ...review,
+        userId: user.id.toString(),
+        leftOn: new Date().toISOString(),
+        spaceId: spaceId,
+      }),
+      Review,
+      ViewReviewDto,
+    );
 
-        return newReview;
-    }
+    newReview.userFirstName = user.firstName;
+    newReview.userLastName = user.lastName;
 
-    async remove(reviewId: string): Promise<boolean> {
-        return await this.reviewRepository.deleteOne({_id: ObjectID(reviewId) }) != null;
-    }
+    return newReview;
+  }
+
+  async remove(reviewId: string): Promise<boolean> {
+    return (
+      (await this.reviewRepository.deleteOne({ _id: ObjectID(reviewId) })) !=
+      null
+    );
+  }
 }

@@ -3,140 +3,145 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { EditCategoryDto } from 'src/category/dto/category.dto';
 
 export class MapView {
-    @ApiProperty()
-    TopLeft: any;
+  @ApiProperty()
+  TopLeft: any;
 
-    @ApiProperty()
-    BottomRight: any;
+  @ApiProperty()
+  BottomRight: any;
 }
+
+export class Image {
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
+  url: string;
+}
+
 export class SpaceLocation {
-    @ApiProperty()
-    lon: string;
+  @ApiProperty()
+  lon: string;
 
-    @ApiProperty()
-    lat: string;
+  @ApiProperty()
+  lat: string;
 
-    @ApiProperty()
-    mapView: MapView;
+  @ApiProperty()
+  mapView: MapView;
 
-    @ApiProperty()
-    country: string;
+  @ApiProperty()
+  country: string;
 
-    @ApiProperty()
-    countryCode: string;
+  @ApiProperty()
+  countryCode: string;
 
-    @ApiProperty()
-    city: string;
+  @ApiProperty()
+  city: string;
 
-    @ApiProperty()
-    street: string;
+  @ApiProperty()
+  street: string;
 
-    @ApiProperty()
-    house: string;
+  @ApiProperty()
+  house: string;
 
-    @ApiProperty()
-    label: string;
+  @ApiProperty()
+  label: string;
 }
-
 
 export class DayTimeSpan {
-    @ApiProperty()
-    available: boolean;
+  @ApiProperty()
+  available: boolean;
 
-    @ApiProperty()
-    from: string;
+  @ApiProperty()
+  from: string;
 
-    @ApiProperty()
-    to: string;
+  @ApiProperty()
+  to: string;
 }
 
 export class Schedule {
-    @ApiProperty()
-    sunday: DayTimeSpan;
+  @ApiProperty()
+  sunday: DayTimeSpan;
 
-    @ApiProperty()
-    monday: DayTimeSpan;
+  @ApiProperty()
+  monday: DayTimeSpan;
 
-    @ApiProperty()
-    tuesday: DayTimeSpan;
+  @ApiProperty()
+  tuesday: DayTimeSpan;
 
-    @ApiProperty()
-    wednesday: DayTimeSpan;
+  @ApiProperty()
+  wednesday: DayTimeSpan;
 
-    @ApiProperty()
-    thursday: DayTimeSpan;
+  @ApiProperty()
+  thursday: DayTimeSpan;
 
-    @ApiProperty()
-    friday: DayTimeSpan;
+  @ApiProperty()
+  friday: DayTimeSpan;
 
-    @ApiProperty()
-    saturday: DayTimeSpan;
+  @ApiProperty()
+  saturday: DayTimeSpan;
 }
 
 export class CreateSpaceDto {
-    @AutoMap()
-    @ApiProperty()
-    categoryId: string;
+  @AutoMap()
+  @ApiProperty()
+  images: Image[];
 
-    @AutoMap()
-    @ApiProperty()
-    title: string;
+  @AutoMap()
+  @ApiProperty()
+  categoryId: string;
 
-    @AutoMap()
-    @ApiProperty()
-    description: string;
+  @AutoMap()
+  @ApiProperty()
+  title: string;
 
-    @AutoMap()
-    @ApiProperty()
-    location: SpaceLocation;
+  @AutoMap()
+  @ApiProperty()
+  description: string;
 
-    @AutoMap()
-    @ApiProperty()
-    opened_at: Schedule;
+  @AutoMap()
+  @ApiProperty()
+  location: SpaceLocation;
 
-    @AutoMap()
-    @ApiPropertyOptional()
-    hourly_rate?: number;
+  @AutoMap()
+  @ApiProperty()
+  opened_at: Schedule;
 
-    @AutoMap()
-    @ApiProperty()
-    phone?: string;
+  @AutoMap()
+  @ApiPropertyOptional()
+  hourly_rate?: number;
 
-    @AutoMap()
-    @ApiProperty({
-        type: [String],
-    })
-    images: Array<string>;
+  @AutoMap()
+  @ApiProperty()
+  phone?: string;
 
-    @AutoMap()
-    @ApiProperty({
-        type: [String],
-    })
-    features: Array<string>;
+  @AutoMap()
+  @ApiProperty({
+    type: [String],
+  })
+  features: Array<string>;
 }
 
 export class EditSpaceDto extends CreateSpaceDto {
-    @AutoMap()
-    @ApiProperty()
-    id: string;
+  @AutoMap()
+  @ApiProperty()
+  id: string;
 
-    @AutoMap()
-    @ApiProperty()
-    created_by: string;
+  @AutoMap()
+  @ApiProperty()
+  created_by: string;
 
-    @AutoMap()
-    @ApiProperty()
-    approved: boolean;
+  @AutoMap()
+  @ApiProperty()
+  approved: boolean;
 
-    @AutoMap()
-    @ApiProperty()
-    approved_by_admin: boolean;
+  @AutoMap()
+  @ApiProperty()
+  approved_by_admin: boolean;
 }
 
 export class ViewSpaceDto extends EditSpaceDto {
-    // @ApiProperty()
-    // reviews: number[];
-
-    // @ApiProperty()
-    // books: number[];
+  // @ApiProperty()
+  // reviews: number[];
+  // @ApiProperty()
+  // books: number[];
 }

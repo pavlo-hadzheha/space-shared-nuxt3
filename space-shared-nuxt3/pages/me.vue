@@ -11,7 +11,6 @@ const auth = useAuth()
     <AppButton
       :type="$componentType.PRIMARY"
       text
-      disabled
       @click="auth.logout"
     >
       Sign Out

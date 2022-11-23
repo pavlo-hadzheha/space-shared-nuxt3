@@ -1,6 +1,7 @@
 import { defineNuxtPlugin } from '#app'
 import { EBreakpoint, EButtonSize, EComponentSize, EComponentType } from '~/types'
 import { routeNames } from '~/build-config/router/route-names'
+import { date } from '@/util/helpers/date'
 
 export default defineNuxtPlugin(() => {
   return {
@@ -16,7 +17,10 @@ export default defineNuxtPlugin(() => {
         sm: useMediaQuery(`(min-width: ${EBreakpoint.SM}px)`)
       }),
       bp: EBreakpoint,
-      buttonSize: EButtonSize
+      buttonSize: EButtonSize,
+      filters: {
+        date
+      }
     }
   }
 })

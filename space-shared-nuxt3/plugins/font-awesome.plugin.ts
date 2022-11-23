@@ -32,6 +32,7 @@ import {
 
 import {
   faArrowLeft as fasArrowLeft,
+  faArrowRight as fasArrowRight,
   faSignIn as fasSignIn,
   faSignInAlt as fasSignInAlt,
   faMagnifyingGlassLocation as fasMagnifyingGlassLocation,
@@ -102,7 +103,8 @@ import {
   faClone as fasClone,
   faPenSquare as fasPenSquare,
   faNotesMedical as fasNotesMedical,
-  faChalkboard as fasChalkboard
+  faChalkboard as fasChalkboard,
+  faHeart as fasHeart
 } from '@fortawesome/free-solid-svg-icons'
 
 const FontAwesomeIconsList = {
@@ -125,6 +127,7 @@ const FontAwesomeIconsList = {
   fasBuilding,
   fasMapMarked,
   fasArrowLeft,
+  fasArrowRight,
 
   farBookmark,
   farCheckCircle,
@@ -143,6 +146,7 @@ const FontAwesomeIconsList = {
   farFilePdf,
   farFileVideo,
 
+  fasHeart,
   fasSignIn,
   fasSignInAlt,
   fasHome,

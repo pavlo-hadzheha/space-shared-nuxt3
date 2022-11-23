@@ -4,8 +4,8 @@ const auth = useAuth()
 
 const navigation = router.options.routes
   .slice()
-  .filter((_route) => !!_route.meta.navOrder)
-  .sort((a, b) => a.meta.navOrder - b.meta.navOrder)
+  .filter((_route) => !!_route.meta?.navOrder)
+  .sort((a, b) => Number(a.meta?.navOrder) - Number(b.meta?.navOrder))
 </script>
 
 <template>
@@ -27,8 +27,8 @@ const navigation = router.options.routes
               class="nav__item"
               active-class="text-primary"
             >
-              <Icon :name="_page.meta.icon" />
-              {{ _page.meta.pageLabel }}
+              <Icon :name="_page.meta?.icon" />
+              {{ _page.meta?.pageLabel }}
             </NuxtLink>
             <span
               class="nav__item"
@@ -184,7 +184,7 @@ const navigation = router.options.routes
 }
 
 .header.header--alt {
-  @apply visible static;
+  @apply visible static h-[70px];
   .nav {
     @apply justify-between;
 

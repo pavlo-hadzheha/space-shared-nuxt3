@@ -45,15 +45,20 @@ export const useAuth = defineStore(EGlobalStateName.AUTH, {
           Authorization: `Bearer ${this.token}`
         }
       })
-      this.user = data
-      useLocalStorage('space-shared-user-id', this.user.id)
-      this.userId = this.user.id
+      this.user = data.value
+      if (data.value) {
+        useLocalStorage('space-shared-user-id', this.user.id)
+        this.userId = this.user.id
+      } else {
+        this.logout()
+      }
     }
   },
   hydrate (storeState) {
     storeState.token = useLocalStorage('space-shared-JWT-token', null).value
     storeState.userId = useLocalStorage('space-shared-user-id', null).value
     storeState.isLoggedIn = !!storeState.token
+    console.log({ storeState })
   }
 })
 
